@@ -109,14 +109,21 @@ public class Player extends Entity{
             String objName = gp.obj[index].name;
             switch (objName) {
             case "Key":
+                gp.playSE(1);
                 numKeys++;
                 gp.obj[index] = null;
                 break;
             case "Door":
+                gp.playSE(3);
                 if (numKeys > 0) {
                     gp.obj[index] = null;
                     numKeys--;
                 }
+                break;
+            case "Boots":
+                gp.playSE(2);
+                speed += 1;
+                gp.obj[index] = null;
                 break;
             }
         }

@@ -34,7 +34,9 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker cChecker = new CollisionChecker(this);
     public SuperObject[] obj = new SuperObject[10];
     public AssetSetter aSetter = new AssetSetter(this);
-    Sound sound = new Sound();
+    Sound se = new Sound();
+    Sound music = new Sound();
+    public UI ui = new UI(this);
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -93,21 +95,22 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
         player.draw(g2); //this will draw the player over the tiles draw sort of like overwritting
+        ui.draw(g2);
         g2.dispose(); // good practice to save memory
     }
 
     public void playMusic(int i) {
-        sound.setFile(i);
-        sound.play();
-        sound.loop();
+        music.setFile(i);
+        music.play();
+        music.loop();
     }
 
     public void stopMusic() {
-        sound.stop();
+        music.stop();
     }
 
     public void playSE(int i) {
-        sound.setFile(i);
-        sound.play();
+        se.setFile(i);
+        se.play();
     }
 }
